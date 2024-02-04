@@ -25,7 +25,7 @@ class UserRegistrationFragment : Fragment()
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
             setContent {
-                UserRegistrationScreen(userRegistrationViewModel)
+                UserRegistrationScreen({ })
             }
         }
     }
@@ -33,7 +33,7 @@ class UserRegistrationFragment : Fragment()
     @Preview
     @Composable
     fun UserRegistrationScreenPreview() {
-        UserRegistrationScreen(onRegisterClick = userRegistrationViewModel)
+        UserRegistrationScreen(onRegisterClick = {  })
     }
 
 }
