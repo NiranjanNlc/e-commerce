@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,15 +26,24 @@ class UserRegistrationFragment : Fragment()
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
             setContent {
-                UserRegistrationScreen({ })
+                UserRegistrationScreen({ email, password, confirmPassword ->
+                    onRegisterClick(email, password, confirmPassword) })
             }
         }
     }
 
-    @Preview
-    @Composable
-    fun UserRegistrationScreenPreview() {
-        UserRegistrationScreen(onRegisterClick = {  })
+
+    private fun onRegisterClick(email: String, password: String, confirmPassword: String) {
+      if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+          // check for hardcoded email and password
+            if (email == "nlc@gmaiil.com" && password == "12345678" && confirmPassword == "12345678") {
+                Toast.makeText(requireContext(), "Register  sucessful ...", Toast.LENGTH_SHORT).show()
+            } else {
+                // show error message in the form of toast
+                Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show()
+
+            }
+        }
     }
 
 }
